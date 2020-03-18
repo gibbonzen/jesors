@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { StorageService } from '../storage.service';
+import { MotifService } from '../motif.service';
 
 @Component({
   selector: 'app-attestation',
@@ -19,32 +20,17 @@ export class AttestationComponent implements OnInit {
   choice: number = 0
   today = Date.now()
 
-  constructor(private storage: StorageService) { }
+  constructor(public storage: StorageService,
+    public motif: MotifService) { }
 
   ngOnInit() {}
 
   genre() {
-    return this.sexe == 0 ? "Mme" : "M."
+    return this.storage.get("sexe", 0) == 0 ? "Mme" : "M."
   }
 
   female() {
-    return this.sexe == 0 ? "e" : ""
-  }
-
-  choosed(n) {
-    return n == this.choice ? "choosed" : "not_choosed"
-  }
-
-  icon(n) {
-    return n == this.choice ? "checkbox" : "square"
-  }
-
-  color(n) {
-    return n == this.choice ? "primary" : ""
-  }
-
-  longAdresse() {
-    return this.adresse2 !== undefined && this.adresse2 !== null && this.adresse2 !== ""
+    return this.storage.get("sexe", 0) == 0 ? "e" : ""
   }
 
 }

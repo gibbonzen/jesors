@@ -12,8 +12,11 @@ import { AttestationModule } from '../attestation/attestation.module';
     CommonModule,
     FormsModule,
     AttestationModule,
-    RouterModule.forChild([{ path: '', component: Tab1Page }])
+    RouterModule.forChild([
+      { path: '', component: Tab1Page }
+    ])
   ],
   declarations: [Tab1Page]
 })
-export class Tab1PageModule {}
+export class Tab1PageModule {
+}

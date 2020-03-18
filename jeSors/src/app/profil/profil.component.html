@@ -1,43 +1,66 @@
-<p>
-  <ion-list>
-    <ion-item>
-      <ion-label position="stacked"><ion-text color="primary">Prénom</ion-text></ion-label>
-      <ion-input (ionChange)="prenomUpdate($event.target.value)" [value]="prenom"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label position="stacked"><ion-text color="primary">Nom</ion-text></ion-label>
-      <ion-input (ionChange)="nomUpdate($event.target.value)" [value]="nom"></ion-input>
-    </ion-item>
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">
+      <ion-text color="primary">Prénom</ion-text>
+    </ion-label>
+    <ion-input (ionChange)="prenomUpdate($event.target.value)" [value]="prenom"></ion-input>
+  </ion-item>
 
-    <ion-radio-group  (ionChange)="sexeUpdate($event.target.value)" [value]="sexe">
-      <ion-list-header>
-        <ion-label><ion-text color="primary">Sexe</ion-text></ion-label>
-      </ion-list-header>
+  <ion-item>
+    <ion-label position="stacked">
+      <ion-text color="primary">Nom</ion-text>
+    </ion-label>
+    <ion-input (ionChange)="nomUpdate($event.target.value)" [value]="nom"></ion-input>
+  </ion-item>
 
-      <ion-item>
-        <ion-label>Femme</ion-label>
-        <ion-radio slot="end" value="0"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Homme</ion-label>
-        <ion-radio slot="end" value="1"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
+  <ion-radio-group (ionChange)="sexeUpdate($event.target.value)" [value]="sexe">
+    <ion-list-header>
+      <ion-label position="stacked">
+        <ion-text color="primary">Sexe</ion-text>
+      </ion-label>
+    </ion-list-header>
 
     <ion-item>
-      <ion-label position="stacked"><ion-text color="primary">Né{{female()}} le</ion-text></ion-label>
-      <ion-datetime (ionChange)="naissanceUpdate($event.target.value)" displayFormat="DD/MM/YYYY" [value]="getNaissance()"></ion-datetime>
+      <ion-label>Femme</ion-label>
+      <ion-radio slot="end" value="0"></ion-radio>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked"><ion-text color="primary">Adresse</ion-text></ion-label>
-      <ion-input placeholder="Ligne 1" (ionChange)="adresse1Update($event.target.value)" [value]="adresse1"></ion-input>
-      <ion-input placeholder="Ligne 2" (ionChange)="adresse2Update($event.target.value)" [value]="adresse2"></ion-input>
-      <ion-input placeholder="Code postal" type="number" (ionChange)="codeUpdate($event.target.value)" [value]="code"></ion-input>
-      <ion-input placeholder="Ville" (ionChange)="villeUpdate($event.target.value)" [value]="ville"></ion-input>
+      <ion-label>Homme</ion-label>
+      <ion-radio slot="end" value="1"></ion-radio>
     </ion-item>
+  </ion-radio-group>
+
+  <ion-item>
+    <ion-label position="stacked">
+      <ion-text color="primary">Né{{female()}} le</ion-text>
+    </ion-label>
+    <ion-datetime (ionChange)="naissanceUpdate($event.target.value)" displayFormat="DD/MM/YYYY"
+      [value]="getNaissance()"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">
+      <ion-text color="primary">Adresse</ion-text>
+    </ion-label>
+    <ion-input placeholder="Ligne 1" (ionChange)="adresse1Update($event.target.value)" [value]="adresse1"></ion-input>
+    <ion-input placeholder="Ligne 2" (ionChange)="adresse2Update($event.target.value)" [value]="adresse2"></ion-input>
+    <ion-input placeholder="Code postal" type="number" (ionChange)="codeUpdate($event.target.value)" [value]="code">
+    </ion-input>
+    <ion-input placeholder="Ville" (ionChange)="villeUpdate($event.target.value)" [value]="ville"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>
+      <ion-text color="primary">Signature</ion-text>
+    </ion-label>
+    <ion-button slot="end" (click)="clearSignature()">
+      <ion-icon name="close" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-item>
+  
+  <ion-item>
+    <app-canvas #canvas></app-canvas>
+  </ion-item>
+  
   </ion-list>
-
-</p>

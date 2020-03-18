@@ -1,3 +1,86 @@
-<p>
-  motif works!
-</p>
+<ion-card (click)="expand(0)">
+  <ion-card-header>
+    <ion-card-subtitle>
+      Déplacements entre le domicile et le lieu professionnel
+    </ion-card-subtitle>
+    <ion-card-title>
+      <ion-icon name="build" size="large" color="{{color(0)}}"></ion-icon>
+      Pour travailler
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content *ngIf="isExpanded(0)">
+    Déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle,
+    lorsqu’ils sont indispensables à l’exercice d’activités ne pouvant être organisées
+    sous forme de télétravail (sur justificatif permanent) ou déplacements
+    professionnels ne pouvant être différés.
+  </ion-card-content>
+</ion-card>
+
+<ion-card (click)="expand(1)">
+  <ion-card-header>
+    <ion-card-subtitle>
+      Déplacements pour effectuer des achats de première nécessité
+    </ion-card-subtitle>
+    <ion-card-title>
+      <ion-icon name="cart" size="large" color="{{color(1)}}"></ion-icon>
+      Pour mes courses
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content *ngIf="isExpanded(1)">
+    Déplacements pour effectuer des achats de première nécessité dans des
+    établissements autorisés (liste sur gouvernement.fr).
+  </ion-card-content>
+</ion-card>
+
+<ion-card (click)="expand(2)">
+  <ion-card-header>
+    <ion-card-subtitle>
+      Déplacements pour motif de santé
+    </ion-card-subtitle>
+    <ion-card-title>
+      <ion-icon name="pulse" size="large" color="{{color(2)}}"></ion-icon>
+      Pour ma santé
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content *ngIf="isExpanded(2)">
+    Déplacements pour motif de santé.
+  </ion-card-content>
+</ion-card>
+
+<ion-card (click)="expand(3)">
+  <ion-card-header>
+    <ion-card-subtitle>
+      Déplacements pour motif familial
+    </ion-card-subtitle>
+    <ion-card-title>
+      <ion-icon name="people" size="large" color="{{color(3)}}"></ion-icon>
+      Pour ma famille, mes enfants
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content *ngIf="isExpanded(3)">
+    Déplacements pour motif familial impérieux, pour l’assistance aux personnes
+    vulnérables ou la garde d’enfants.
+  </ion-card-content>
+</ion-card>
+
+<ion-card (click)="expand(4)">
+  <ion-card-header>
+    <ion-card-subtitle>
+      Déplacements brefs
+    </ion-card-subtitle>
+    <ion-card-title>
+      <ion-icon name="body" size="large" color="{{color(4)}}"></ion-icon>
+      Pour mes animaux, mon sport
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content *ngIf="isExpanded(4)">
+    Déplacements brefs, à proximité du domicile, liés à l’activité physique individuelle
+    des personnes, à l’exclusion de toute pratique sportive collective, et aux besoins
+    des animaux de compagnie.
+  </ion-card-content>
+</ion-card>

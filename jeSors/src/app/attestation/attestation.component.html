@@ -10,18 +10,23 @@
     <div>
       Je soussigné{{female()}} <br>
       <span class="col_left">{{genre()}} </span>
-      <span class="col_right"><strong>{{prenom}} {{nom}}</strong></span> <br>
+      <span class="col_right"><strong>{{this.storage.get("prenom", "")}} {{this.storage.get("nom", "")}}</strong></span> <br>
 
       <span class="col_left">Né{{female()}} le :</span>
-      <span class="col_right"><strong>{{naissance | date:'dd/MM/yyyy'}}</strong></span> <br>
+      <span class="col_right"><strong>{{this.storage.get("naissance", "") | date:'dd/MM/yyyy'}}</strong></span> <br>
 
-      <span class="col_left">Demeurant :</span>
-      <span class="col_right"><strong>{{adresse1}}</strong></span> <br>
-      <span class="col_left" *ngIf="longAdresse()"></span>
-      <span class="col_right" *ngIf="longAdresse()"><strong>{{adresse2}}</strong></span> <br>
+      <div>
+        <span class="col_left">Demeurant :</span>
+        <span class="col_right"><strong>{{this.storage.get("adresse1", "")}}</strong></span> <br>
+      </div>
+      
+    <div *ngIf='this.storage.get("adresse2", "") !== ""'>
+      <span class="col_left"></span>
+      <span class="col_right"><strong>{{this.storage.get("adresse2", "")}}</strong></span> <br>
+    </div>
 
       <span class="col_left"></span>
-      <span class="col_right"><strong>{{code}} {{ville}}</strong></span> <br>
+      <span class="col_right"><strong>{{this.storage.get("code", "")}} {{this.storage.get("ville", "")}}</strong></span> <br>
     </div>
 
     <div>
@@ -32,52 +37,22 @@
   </ion-card-content>
 
   <ion-card-content>
-    <div class="{{choosed(0)}}">
+    <div class="choosed">
       <p>
-        <ion-icon name="{{icon(0)}}" size="medium" color="{{color(0)}}"></ion-icon>
-        déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle,
-        lorsqu’ils sont indispensables à l’exercice d’activités ne pouvant être organisées
-        sous forme de télétravail (sur justificatif permanent) ou déplacements
-        professionnels ne pouvant être différés ;
-      </p>
-    </div>
-    
-    <div class="{{choosed(1)}}">
-      <p>
-        <ion-icon name="{{icon(1)}}" size="medium" color="{{color(1)}}"></ion-icon>
-        déplacements pour effectuer des achats de première nécessité dans des
-        établissements autorisés (liste sur gouvernement.fr);
-      </p>
-    </div>
-    
-    <div class="{{choosed(2)}}">
-      <p>
-        <ion-icon name="{{icon(2)}}" size="medium" color="{{color(2)}}"></ion-icon>
-        déplacements pour motif de santé;
-      </p>
-    </div>
-    
-    <div class="{{choosed(3)}}">
-      <p>
-        <ion-icon name="{{icon(3)}}" size="medium" color="{{color(3)}}"></ion-icon>
-        déplacements pour motif familial impérieux, pour l’assistance aux personnes
-        vulnérables ou la garde d’enfants ;
-      </p>
-    </div>
-    
-    <div class="{{choosed(4)}}">
-      <p>
-        <ion-icon name="{{icon(4)}}" size="medium" color="{{color(4)}}"></ion-icon>
-        déplacements brefs, à proximité du domicile, liés à l’activité physique individuelle
-        des personnes, à l’exclusion de toute pratique sportive collective, et aux besoins
-        des animaux de compagnie.
+        <ion-icon name="checkbox" size="medium" color="primary"></ion-icon>
+        {{this.motif.getMotif(this.storage.get("motif", 1))}}
       </p>
     </div>
   </ion-card-content>
   
   <ion-card-content>
     <div class="right">
-      Fait à {{ville}}, le {{ today | date:'dd/MM/yyyy' }}
+      Fait à {{ville}}, le {{ today | date:'dd/MM/yyyy' }} <br>
+    </div>
+
+    <div class="right">
+      <img src='{{this.storage.get("signature", "")}}' alt="Signature">
     </div>
   </ion-card-content>
+
 </ion-card>

@@ -1,5 +1,6 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StorageService } from '../storage.service';
+import { CanvasComponent } from '../canvas/canvas.component';
 
 @Component({
   selector: 'app-profil',
@@ -15,6 +16,9 @@ export class ProfilComponent implements OnInit {
   adresse2: string = this.storage.get("adresse2", "")
   code: number = this.storage.get("code", 0)
   ville: string = this.storage.get("ville", "")
+  signature = null
+
+  @ViewChild('canvas', { static: true }) canvas: CanvasComponent
 
   constructor(private storage: StorageService) { }
 
@@ -67,6 +71,11 @@ export class ProfilComponent implements OnInit {
   villeUpdate(v: string) {
     this.ville = v
     this.save("ville", this.ville)
+  }
+
+  clearSignature() {
+    this.signature = null
+    this.canvas.clear()
   }
 
   save(item, value) {
