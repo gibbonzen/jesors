@@ -1,0 +1,83 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title class="center">ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</ion-card-title>
+    <ion-card-subtitle class="center">En application de l’article 1er du décret du 16 mars 2020 portant réglementation des
+      déplacements dans le cadre de la lutte contre la propagation du virus Covid-19 :
+    </ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div>
+      Je soussigné{{female()}} <br>
+      <span class="col_left">{{genre()}} </span>
+      <span class="col_right"><strong>{{prenom}} {{nom}}</strong></span> <br>
+
+      <span class="col_left">Né{{female()}} le :</span>
+      <span class="col_right"><strong>{{naissance | date:'dd/MM/yyyy'}}</strong></span> <br>
+
+      <span class="col_left">Demeurant :</span>
+      <span class="col_right"><strong>{{adresse1}}</strong></span> <br>
+      <span class="col_left" *ngIf="longAdresse()"></span>
+      <span class="col_right" *ngIf="longAdresse()"><strong>{{adresse2}}</strong></span> <br>
+
+      <span class="col_left"></span>
+      <span class="col_right"><strong>{{code}} {{ville}}</strong></span> <br>
+    </div>
+
+    <div>
+      certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par
+      l’article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans
+      le cadre de la lutte contre la propagation du virus Covid-19 : <br>
+    </div>
+  </ion-card-content>
+
+  <ion-card-content>
+    <div class="{{choosed(0)}}">
+      <p>
+        <ion-icon name="{{icon(0)}}" size="medium" color="{{color(0)}}"></ion-icon>
+        déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle,
+        lorsqu’ils sont indispensables à l’exercice d’activités ne pouvant être organisées
+        sous forme de télétravail (sur justificatif permanent) ou déplacements
+        professionnels ne pouvant être différés ;
+      </p>
+    </div>
+    
+    <div class="{{choosed(1)}}">
+      <p>
+        <ion-icon name="{{icon(1)}}" size="medium" color="{{color(1)}}"></ion-icon>
+        déplacements pour effectuer des achats de première nécessité dans des
+        établissements autorisés (liste sur gouvernement.fr);
+      </p>
+    </div>
+    
+    <div class="{{choosed(2)}}">
+      <p>
+        <ion-icon name="{{icon(2)}}" size="medium" color="{{color(2)}}"></ion-icon>
+        déplacements pour motif de santé;
+      </p>
+    </div>
+    
+    <div class="{{choosed(3)}}">
+      <p>
+        <ion-icon name="{{icon(3)}}" size="medium" color="{{color(3)}}"></ion-icon>
+        déplacements pour motif familial impérieux, pour l’assistance aux personnes
+        vulnérables ou la garde d’enfants ;
+      </p>
+    </div>
+    
+    <div class="{{choosed(4)}}">
+      <p>
+        <ion-icon name="{{icon(4)}}" size="medium" color="{{color(4)}}"></ion-icon>
+        déplacements brefs, à proximité du domicile, liés à l’activité physique individuelle
+        des personnes, à l’exclusion de toute pratique sportive collective, et aux besoins
+        des animaux de compagnie.
+      </p>
+    </div>
+  </ion-card-content>
+  
+  <ion-card-content>
+    <div class="right">
+      Fait à {{ville}}, le {{ today | date:'dd/MM/yyyy' }}
+    </div>
+  </ion-card-content>
+</ion-card>

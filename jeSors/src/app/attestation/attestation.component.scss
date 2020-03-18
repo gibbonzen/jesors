@@ -1,0 +1,24 @@
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.col_left {
+  display: inline-block;
+  width: 30%;
+}
+
+.col_right { 
+  display: inline-block;
+}
+
+.choosed {
+  font-weight: bold;
+}
+
+.not_choosed {
+  text-decoration: line-through;
+}
